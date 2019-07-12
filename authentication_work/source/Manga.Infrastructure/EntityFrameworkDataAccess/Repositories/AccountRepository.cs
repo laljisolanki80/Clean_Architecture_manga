@@ -7,6 +7,7 @@ namespace Manga.Infrastructure.EntityFrameworkDataAccess
     using Manga.Domain.Accounts;
     using Microsoft.EntityFrameworkCore;
     using System.Linq;
+    using Maxnga.Infrastructure.EntityFrameworkDataAccess;
 
     public sealed class AccountRepository : IAccountRepository
     {

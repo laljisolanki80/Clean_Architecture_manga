@@ -6,6 +6,7 @@ namespace Manga.Infrastructure.EntityFrameworkDataAccess
     using Microsoft.EntityFrameworkCore.Infrastructure;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
+    using Maxnga.Infrastructure.EntityFrameworkDataAccess;
 
     public sealed class ContextFactory : IDesignTimeDbContextFactory<MangaContext>
     {

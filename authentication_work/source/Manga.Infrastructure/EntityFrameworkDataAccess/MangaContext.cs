@@ -1,4 +1,4 @@
-namespace Manga.Infrastructure.EntityFrameworkDataAccess
+namespace Maxnga.Infrastructure.EntityFrameworkDataAccess
 {
     using System;
     using Manga.Domain.Accounts;
@@ -13,16 +13,19 @@ namespace Manga.Infrastructure.EntityFrameworkDataAccess
         {
 
         }
-
+        
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Credit> Credits { get; set; }
         public DbSet<Debit> Debits { get; set; }
+ 
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            //modelBuilder.Entity<NewCust>(e => e.ToTable("AspNetUsers").HasKey(x => x.Id));
             modelBuilder.Entity<Account>()
                 .ToTable("Account");
 

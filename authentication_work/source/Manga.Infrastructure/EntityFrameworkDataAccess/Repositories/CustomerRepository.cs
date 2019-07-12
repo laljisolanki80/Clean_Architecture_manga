@@ -5,6 +5,7 @@ namespace Manga.Infrastructure.EntityFrameworkDataAccess
     using Manga.Application.Repositories;
     using Manga.Domain.Customers;
     using System.Linq;
+    using Maxnga.Infrastructure.EntityFrameworkDataAccess;
 
     public sealed class CustomerRepository : ICustomerRepository
     {

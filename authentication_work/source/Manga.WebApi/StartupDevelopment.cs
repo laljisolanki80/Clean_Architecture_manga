@@ -12,6 +12,7 @@ using Manga.Domain;
 using Manga.Infrastructure.EntityFrameworkDataAccess;
 using Manga.Infrastructure.IdentityAuthentication;
 using Manga.Infrastructure.IdentityAuthentication.Basic;
+using Maxnga.Infrastructure.EntityFrameworkDataAccess;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
