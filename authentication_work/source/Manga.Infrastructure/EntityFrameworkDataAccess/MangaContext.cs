@@ -8,7 +8,7 @@ namespace Maxnga.Infrastructure.EntityFrameworkDataAccess
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
-    public sealed class MangaContext : IdentityDbContext
+    public sealed class MangaContext : IdentityDbContext<ApplicationUser>
     {
         public MangaContext(DbContextOptions options) : base(options)
         {
@@ -19,7 +19,7 @@ namespace Maxnga.Infrastructure.EntityFrameworkDataAccess
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Credit> Credits { get; set; }
         public DbSet<Debit> Debits { get; set; }
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
 
 
@@ -27,8 +27,8 @@ namespace Maxnga.Infrastructure.EntityFrameworkDataAccess
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ApplicationUser>()
-                .Property(b => b.SSN);
+            //modelBuilder.Entity<ApplicationUser>()
+            //    .Property(b => b.SSN);
 
             modelBuilder.Entity<Account>()
                 .ToTable("Account");
