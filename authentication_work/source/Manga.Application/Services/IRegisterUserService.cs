@@ -8,6 +8,6 @@ namespace Manga.Application.Services
 {
     public interface IRegisterUserService
     {
-        RegisterOutput Execute(string username, string password);
+        ServiceOutput Execute(ServiceInput input);
     }
 }
