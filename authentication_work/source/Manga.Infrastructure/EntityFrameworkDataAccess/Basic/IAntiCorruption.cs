@@ -1,4 +1,4 @@
-﻿using Manga.Application.Boundaries.Register;
+﻿using Manga.Domain.Customers;
 using System;
 using System.Collections.Generic;
 using System.Text;

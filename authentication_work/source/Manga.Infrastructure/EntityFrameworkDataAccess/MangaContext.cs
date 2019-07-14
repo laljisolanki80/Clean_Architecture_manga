@@ -16,10 +16,10 @@ namespace Maxnga.Infrastructure.EntityFrameworkDataAccess
         }
         
         public DbSet<Account> Accounts { get; set; }
-        public DbSet<Customer> Customers { get; set; }
+        //public DbSet<Customer> Customers { get; set; }
         public DbSet<Credit> Credits { get; set; }
         public DbSet<Debit> Debits { get; set; }
-        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
 
 
@@ -27,8 +27,8 @@ namespace Maxnga.Infrastructure.EntityFrameworkDataAccess
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<ApplicationUser>()
-            //    .Property(b => b.SSN);
+            modelBuilder.Entity<ApplicationUser>()
+            .Property(b => b.SSN);
 
             modelBuilder.Entity<Account>()
                 .ToTable("Account");

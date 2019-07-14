@@ -5,9 +5,11 @@ namespace Manga.Infrastructure.EntityFrameworkDataAccess
     using Manga.Application.Repositories;
     using Manga.Domain.Customers;
     using System.Linq;
+    using Manga.Infrastructure.EntityFrameworkDataAccess.Basic;
+    using Manga.Domain.ValueObjects;
     using Maxnga.Infrastructure.EntityFrameworkDataAccess;
 
-    public sealed class CustomerRepository : ICustomerRepository
+    public sealed class CustomerRepository : ICustomerRepository, IAntiCorruption
     {
         private readonly MangaContext _context;
 
@@ -26,23 +28,33 @@ namespace Manga.Infrastructure.EntityFrameworkDataAccess
 
         public async Task<ICustomer> Get(Guid id)
         {
-            //Customer customer = await _context.Customers
-            //    .FindAsync(id);
+            ApplicationUser user = await _context.ApplicationUsers
+               .FindAsync(id.ToString());
 
-            //var accounts = _context.Accounts
-            //    .Where(e => e.CustomerId == id)
-            //    .Select(e => e.Id)
-            //    .ToList();
+            var customer = Translate(user);
 
-            //customer.LoadAccounts(accounts);
+            var accounts = _context.Accounts
+                .Where(e => e.CustomerId == id)
+                .Select(e => e.Id)
+                .ToList();
 
-            return null;
+            customer.LoadAccounts(accounts);
+
+            return customer;
+        }
+
+        public Customer Translate(ApplicationUser user)
+        {
+            return new Customer(
+              new Guid(user.Id),
+              new SSN(user.SSN),
+              new Name(user.UserName));
         }
 
         public async Task Update(ICustomer customer)
         {
-            _context.Customers.Update((Customer) customer);
-            await _context.SaveChangesAsync();
+            //_context.Customers.Update((Customer) customer);
+            //await _context.SaveChangesAsync();
         }
     }
 }
